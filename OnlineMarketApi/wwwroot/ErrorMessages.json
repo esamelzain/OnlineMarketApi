@@ -1,0 +1,112 @@
+ [
+    {
+      "ErrorCode": "200",
+      "ErrorMessage": "Successful",
+      "ErrorMessageAr": "تمت العملية بنجاح"
+    },
+    {
+      "ErrorCode": "210",
+      "ErrorMessage": "Data Edited Successful",
+      "ErrorMessageAr": "تم تعديل البيانات بنجاح"
+    },
+    {
+      "ErrorCode": "404",
+      "ErrorMessage": "Login Failed, Please check your credentials!",
+      "ErrorMessageAr": "الرجاء التحقق من بيانات الدخول الخاصة بك"
+    },
+    {
+      "ErrorCode": "402",
+      "ErrorMessage": "Data Not Found",
+      "ErrorMessageAr": "لاتوجد بيانات"
+    },
+    {
+      "ErrorCode": "441",
+      "ErrorMessage": "Already Exist",
+      "ErrorMessageAr": "البيانات موجودة مسبقا"
+    },
+    {
+      "ErrorCode": "405",
+      "ErrorMessage": "User Not Found",
+      "ErrorMessageAr": "المستخدم غير موجود"
+    },
+    {
+      "ErrorCode": "406",
+      "ErrorMessage": "Bad Request",
+      "ErrorMessageAr": "طلب غير صحيح"
+    },
+    {
+      "ErrorCode": "500",
+      "ErrorMessage": "Internal Server Error",
+      "ErrorMessageAr": "حدث خطأ ما"
+    },
+    {
+      "ErrorCode": "501",
+      "ErrorMessage": "Login Attempts limit was exceeded!",
+      "ErrorMessageAr": "تم تجاوز عدد محاولات الدخول المسموح بها"
+    },
+    {
+      "ErrorCode": "502",
+      "ErrorMessage": "Your Account is locked",
+      "ErrorMessageAr": "تم ايقاف حسابك مؤقتا"
+    },
+    {
+      "ErrorCode": "503",
+      "ErrorMessage": "Unauthorized access",
+      "ErrorMessageAr": "دخول غير مصرح به"
+    },
+    {
+      "ErrorCode": "504",
+      "ErrorMessage": "No data to be reterived",
+      "ErrorMessageAr": "عفوا ، لاتوجد بيانات"
+    },
+    {
+      "ErrorCode": "505",
+      "ErrorMessage": "Sorry, Invalid Benificiay Account",
+      "ErrorMessageAr": "عفوا ، حساب المستفيد غير صحيح"
+    },
+    {
+      "ErrorCode": "506",
+      "ErrorMessage": "Sorry, Operation failed, please try again later",
+      "ErrorMessageAr": "عفوا ، لم تتم العملية بنجاح ، الرجاء المحاولة لاحقا"
+    },
+    {
+      "ErrorCode": "507",
+      "ErrorMessage": "Sorry, Invalid Account Information",
+      "ErrorMessageAr": "عفوا ، معلومات الحساب غير صحيحة"
+    },
+    {
+      "ErrorCode": "508",
+      "ErrorMessage": "Sorry, Invalid Account Type",
+      "ErrorMessageAr": "عفوا ، نوع الحساب غير صحيح"
+    },
+    {
+      "ErrorCode": "509",
+      "ErrorMessage": "Sorry, Invalid Confirm Code",
+      "ErrorMessageAr": "عفوا ، خطأ في بيانات التأكيد"
+    },
+    {
+      "ErrorCode": "510",
+      "ErrorMessage": "Sorry, Account already exists",
+      "ErrorMessageAr": "عفوا ، الحساب مضاف مسبقا"
+    },
+    {
+      "ErrorCode": "511",
+      "ErrorMessage": "Sorry, fill all required fields",
+      "ErrorMessageAr": "عفوا ، الرجاء ادخال كل البيانات المطلوبة"
+    },
+    {
+      "ErrorCode": "512",
+      "ErrorMessage": "Sorry, Invalid Customer Information",
+      "ErrorMessageAr": "عفوا ، معلومات العميل غير صحيحة"
+    },
+    {
+      "ErrorCode": "513",
+      "ErrorMessage": "Sorry, You can't edit",
+      "ErrorMessageAr": "عفوا ، لا يمكنك التعديل"
+    },
+    {
+      "ErrorCode": "514",
+      "ErrorMessage": "Sorry, favorite number is already added",
+      "ErrorMessageAr": "عفوا ، الرقم المفضل مضاف مسبقا"
+    }
+  ]
