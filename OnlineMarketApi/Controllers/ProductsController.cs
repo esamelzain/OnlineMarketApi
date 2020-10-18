@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using OnlineMarketApi.Handlers;
 using OnlineMarketApi.Models.Db;
 using OnlineMarketApi.Models.RequestsResponse;
@@ -66,7 +67,7 @@ namespace OnlineMarketApi.Controllers
                 return new Products
                 {
                     count = _context.Product.Count(),
-                    products = rProducts,
+                    products = rProducts.Distinct().ToList(),
                     responseMessage = Helper.GetErrorMessage("200", Path.Combine(_env.WebRootPath, "ErrorMessages.json"))
                 };
             }
@@ -91,6 +92,13 @@ namespace OnlineMarketApi.Controllers
                 List<RCategory> categories = new List<RCategory>();
                 foreach (var product in products.products)
                 {
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
                     var cat = _context.Category.SingleOrDefault(c => c.Id == product.CategoryId);
                     var prods = _context.Product.Where(p => p.CategoryId == cat.Id).ToList();
                     List<RProduct> RProduct = new List<RProduct>();
@@ -119,7 +127,7 @@ namespace OnlineMarketApi.Controllers
                 }
                 return new Categories
                 {
-                    categories = categories,
+                    categories = categories.Distinct().ToList(),
                     responseMessage = Helper.GetErrorMessage("200", Path.Combine(_env.WebRootPath, "ErrorMessages.json"))
                 };
             }
