@@ -92,13 +92,6 @@ namespace OnlineMarketApi.Controllers
                 List<RCategory> categories = new List<RCategory>();
                 foreach (var product in products.products)
                 {
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
                     var cat = _context.Category.SingleOrDefault(c => c.Id == product.CategoryId);
                     var prods = _context.Product.Where(p => p.CategoryId == cat.Id).ToList();
                     List<RProduct> RProduct = new List<RProduct>();
@@ -117,13 +110,32 @@ namespace OnlineMarketApi.Controllers
                             responseMessage = null
                         });
                     }
-                    categories.Add(new RCategory
+                    var Rcat = new RCategory
                     {
                         Id = cat.Id,
                         CategoryImg = cat.CategoryImg,
                         CategoryName = cat.CategoryName,
                         RProducts = RProduct
-                    });
+                    };
+                    if (categories.Count == 0)
+                    {
+                        categories.Add(Rcat);
+                    }
+                    else
+                    {
+                        bool found = false;
+                        foreach (var item in categories)
+                        {
+                            if (item.Id == Rcat.Id)
+                            {
+                                found = true;
+                            }
+                        }
+                        if (!found)
+                        {
+                            categories.Add(Rcat);
+                        }
+                    }
                 }
                 return new Categories
                 {
