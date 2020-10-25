@@ -16,6 +16,9 @@ namespace OnlineMarketApi.Models.Db
         public string UserImg { get; set; }
         public string UserPassword { get; set; }
         public bool IsActive { get; set; }
+        public int? ConfirmCode { get; set; }
+        public bool? IsConfirmed { get; set; }
+        public string Email { get; set; }
 
         public ICollection<Order> Order { get; set; }
     }

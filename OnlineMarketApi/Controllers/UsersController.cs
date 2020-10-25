@@ -41,7 +41,7 @@ namespace OnlineMarketApi.Controllers
                         Img = user.Img,
                         UserName = user.UserName,
                         RoleId = user.RoleId,
-                        Password = user.Password
+                        Password = user.Password,
                     });
                 }
                 return new Users
@@ -232,10 +232,17 @@ namespace OnlineMarketApi.Controllers
                 }
                 string token = Hash.Create(loginRequest.UserName + ":" + hash);
                 //user.Token = token;
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
                 return new LoginToken
                 {
                     Token = token,
+                    UserInfo = new RUser
+                    {
+                        Id = user.Id,
+                        Img = user.Img,
+                        RoleId = user.RoleId,
+                        UserName = user.UserName
+                    },
                     responseMessage = Helper.GetErrorMessage("200", Path.Combine(_env.WebRootPath, "ErrorMessages.json"))
                 };
             }

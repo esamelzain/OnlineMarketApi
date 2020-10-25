@@ -22,6 +22,7 @@ namespace OnlineMarketApi.Models.RequestsResponse
         public string Description { get; set; }
         public string CategoryId { get; set; }
         public ROffer ROffer { get; set; }
+        public List<RProductProp> Props { get; set; }
 
     }
 }

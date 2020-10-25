@@ -9,6 +9,7 @@ namespace OnlineMarketApi.Models.Db
         {
             Offer = new HashSet<Offer>();
             OrderDetail = new HashSet<OrderDetail>();
+            ProductProp = new HashSet<ProductProp>();
         }
 
         public string Id { get; set; }
@@ -23,5 +24,6 @@ namespace OnlineMarketApi.Models.Db
         public Category Category { get; set; }
         public ICollection<Offer> Offer { get; set; }
         public ICollection<OrderDetail> OrderDetail { get; set; }
+        public ICollection<ProductProp> ProductProp { get; set; }
     }
 }

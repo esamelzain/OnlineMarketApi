@@ -204,13 +204,21 @@ namespace OnlineMarketApi.Controllers
             }
 
             var product = await _context.Product.FindAsync(idClass.Id);
-
             if (product == null)
             {
                 return new RProduct
                 {
                     responseMessage = Helper.GetErrorMessage("402", Path.Combine(_env.WebRootPath, "ErrorMessages.json"))
                 };
+            }
+            var productProps = _context.ProductProp.Where(pP => pP.ProductId == idClass.Id).ToList();
+            List<RProductProp> RProductProp = new List<RProductProp>();
+            foreach (var prop in productProps)
+            {
+                RProductProp.Add(new Models.RequestsResponse.RProductProp
+                {
+                    Value = prop.Value
+                });
             }
             return new RProduct
             {
@@ -222,6 +230,7 @@ namespace OnlineMarketApi.Controllers
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
+                Props = RProductProp,
                 responseMessage = Helper.GetErrorMessage("200", Path.Combine(_env.WebRootPath, "ErrorMessages.json"))
             };
         }
@@ -304,7 +313,19 @@ namespace OnlineMarketApi.Controllers
                     Price = rProduct.Price,
                     Quantity = rProduct.Quantity,
                 };
+                List<ProductProp> props = new List<ProductProp>();
                 _context.Product.Add(product);
+                await _context.SaveChangesAsync();
+                foreach (var prop in rProduct.Props)
+                {
+                    props.Add(new ProductProp
+                    {
+                        ProductId = product.Id,
+                        PropId = prop.PropId,
+                        Value = prop.Value
+                    });
+                }
+                _context.ProductProp.AddRange(props);
                 await _context.SaveChangesAsync();
                 return new BaseResponse
                 {

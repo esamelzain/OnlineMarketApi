@@ -23,12 +23,15 @@ namespace OnlineMarketApi.Models.Db
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductProp> ProductProp { get; set; }
+        public virtual DbSet<Prop> Prop { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Setting> Setting { get; set; }
         public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             if (!optionsBuilder.IsConfigured)
             {
                 JToken jAppSettings = JToken.Parse(
@@ -36,7 +39,6 @@ namespace OnlineMarketApi.Models.Db
                      "appsettings.json")));
                 var xObject = jAppSettings["ConnectionStrings"];
                 var ConnectionString = xObject["OnlineMarketDb"].ToString();
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer(ConnectionString);
             }
         }
@@ -66,6 +68,10 @@ namespace OnlineMarketApi.Models.Db
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .ValueGeneratedNever();
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.UserImg)
                     .IsRequired()
@@ -207,6 +213,37 @@ namespace OnlineMarketApi.Models.Db
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Product_Category");
+            });
+
+            modelBuilder.Entity<ProductProp>(entity =>
+            {
+                entity.Property(e => e.ProductId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Value)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.ProductProp)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductProp_Product");
+
+                entity.HasOne(d => d.Prop)
+                    .WithMany(p => p.ProductProp)
+                    .HasForeignKey(d => d.PropId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductProp_Prop");
+            });
+
+            modelBuilder.Entity<Prop>(entity =>
+            {
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Role>(entity =>

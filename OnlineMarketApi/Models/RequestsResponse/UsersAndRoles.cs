@@ -22,6 +22,7 @@ namespace OnlineMarketApi.Models.RequestsResponse
     public class LoginToken : BaseResponse
     {
         public string Token { get; set; }
+        public RUser UserInfo { get; set; }
     }
 
     public class LoginRequest
